@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "chokidar './src/**/*.scss' -c 'npm run build-css' & chokidar './src/js/**/*.js' -c 'npm run build-js' & astro dev",
-    "build-css": "sass ./src/styles/scss/styles.scss ./dist/css/style.css --style expanded --source-map",
+    "build-css": "sass ./src/styles/styles.scss ./dist/css/style.css --style expanded --source-map",
     "build-js": "terser ./src/js/main.js --compress --mangle --source-map filename='bundle.js.min.map' -o ./dist/js/bundle.min.js",
     "build": "astro build",
     "preview": "astro preview",
