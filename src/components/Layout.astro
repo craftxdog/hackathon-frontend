@@ -1,0 +1,25 @@
+<!-- src/components/Layout.astro -->
+<template>
+    <div>
+        <!-- Contenido del layout -->
+        <header>
+            <h1>Mi Sitio Web</h1>
+        </header>
+        <main>
+            <slot></slot>
+        </main>
+        <footer>
+            <p>© 2023 Mi Sitio Web</p>
+        </footer>
+    </div>
+</template>
+
+<style>
+    /* Aquí puedes importar tu archivo CSS principal */
+    @import "/dist/css/style.css";
+</style>
+
+<script>
+    // Aquí puedes importar tu archivo JS principal
+    import "/dist/js/bundle.min.js";
+</script>

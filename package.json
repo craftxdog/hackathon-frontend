@@ -4,12 +4,28 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
+    "start": "chokidar './src/**/*.scss' -c 'npm run build-css' & chokidar './src/js/**/*.js' -c 'npm run build-js' & astro dev",
+    "build-css": "sass ./src/styles/scss/styles.scss ./dist/css/style.css --style expanded --source-map",
+    "build-js": "terser ./src/js/main.js --compress --mangle --source-map filename='bundle.js.min.map' -o ./dist/js/bundle.min.js",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^3.0.12"
+    "astro": "^3.0.12",
+    "lru-cache": "^10.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.15",
+    "chokidar-cli": "^3.0.0",
+    "esm": "^3.2.25",
+    "glob": "^10.3.4",
+    "imagemin": "^8.0.1",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-webp": "^8.0.0",
+    "postcss-cli": "^10.1.0",
+    "sass": "^1.66.1",
+    "sharp": "^0.32.5",
+    "terser": "^5.19.4"
   }
 }
