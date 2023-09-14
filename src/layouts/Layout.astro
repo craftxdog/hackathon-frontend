@@ -1,25 +1,28 @@
-<!-- src/components/Layout.astro -->
-<template>
-    <div>
-        <!-- Contenido del layout -->
-        <header>
-            <h1>Mi Sitio Web</h1>
-        </header>
-        <main>
-            <slot />
-        </main>
-        <footer>
-            <p>© 2023 Mi Sitio Web</p>
-        </footer>
-    </div>
-</template>
+---
+import Header from "../components/Header.astro"
+const {title} = Astro.props;
+---
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+        <style>
+            /* Aquí puedes importar tu archivo CSS principal */
+            @import "/src/styles/style.css";
+        </style>
+		<title>{title}</title>
+	</head>
+	<body>
+		<Header/>
+        <slot/>
+        <script type="module">
+            // Aquí puedes importar tu archivo JS principal
+            import "/src/js/main.js";
+        </script>
+	</body>
+</html>
 
-<style>
-    /* Aquí puedes importar tu archivo CSS principal */
-    @import "/dist/css/style.css";
-</style>
 
-<script type="module">
-    // Aquí puedes importar tu archivo JS principal
-    import "/dist/js/bundle.min.js";
-</script>
+
