@@ -371,4 +371,163 @@ h3 {
   margin-bottom: 5rem;
 }
 
+.header__contenedor {
+  width: min(95%, 150rem);
+  margin: 0 auto;
+}
+.header__navegacion {
+  padding: 5rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+@media (min-width: 768px) {
+  .header__navegacion {
+    justify-content: flex-end;
+  }
+}
+.header__enlace, .header__submit {
+  all: unset;
+  color: #FFFFFF;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.header__enlace:hover, .header__submit:hover {
+  color: #007df4;
+  cursor: pointer;
+}
+.header__form {
+  display: flex;
+}
+.header__contenido {
+  padding-top: 10rem;
+}
+@media (min-width: 768px) {
+  .header__contenido {
+    padding-top: 5rem;
+  }
+}
+.header__logo {
+  font-size: clamp(2rem, -0.8rem + 10vw, 8rem);
+  background: linear-gradient(to right, #007df4, #00c8c2);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .header__logo {
+    text-align: left;
+    display: inline-block;
+  }
+}
+.header__texto {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 2rem 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+@media (min-width: 768px) {
+  .header__texto {
+    text-align: left;
+  }
+}
+.header__texto--modalidad {
+  font-size: 2rem;
+}
+.header__boton {
+  background-color: #00c8c2;
+  padding: 1.5rem 4rem;
+  color: #FFFFFF;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border: none;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  text-transform: uppercase;
+  margin: 2rem 0;
+}
+.header__boton:hover {
+  background-color: #009591;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .header__boton {
+    width: auto;
+  }
+}
+
+.barra {
+  background-color: #e7e6e1;
+}
+.barra__contenido {
+  width: min(95%, 150rem);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 1024px) {
+  .barra__contenido {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.barra__logo {
+  text-align: center;
+  margin-bottom: 2rem;
+  white-space: nowrap;
+  animation: heartBeat;
+  animation-duration: 20s;
+  font-size: clamp(1rem, -0.8rem + 10vw, 3rem);
+}
+@media (min-width: 1024px) {
+  .barra__logo {
+    text-align: left;
+    margin: 0;
+  }
+}
+
+.logo-texto {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .logo-texto {
+    font-size: clamp(1.2rem, -0.8rem + 10vw, 2rem);
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-left: 0.7rem;
+  }
+}
+.logo-texto-r {
+  color: #64748B;
+}
+
+.navegacion {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 1024px) {
+  .navegacion {
+    flex-direction: row;
+  }
+}
+.navegacion__enlace {
+  color: #1a1b15;
+  font-size: 1.5rem;
+  padding: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+.navegacion__enlace:hover {
+  color: #007df4;
+}
+
 /*# sourceMappingURL=style.css.map */

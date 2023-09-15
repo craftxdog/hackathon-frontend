@@ -47,17 +47,17 @@
     grid-template-columns: repeat($columnas, 1fr);
 }
 
-@mixin container {
-    width: min(95%, 140rem);
+@mixin contenedor {
+    width: min(95%, 150rem);
     margin: 0 auto;
 }
 
-@mixin container-md {
+@mixin contenedor-md {
     width: min(95%, 80rem);
     margin: 0 auto;
 }
 
-@mixin container-sm {
+@mixin contenedor-sm {
     width: min(95%, 60rem);
     margin: 0 auto;
 }
@@ -110,7 +110,7 @@
 }
 
 @mixin logo {
-    color: v.$blanco;
+    // color: v.$blanco;
     text-align: center;
     margin-bottom: 2rem;
     white-space: nowrap;
@@ -225,9 +225,11 @@
 
 @mixin links-dp{
     color: v.$gris-oscuro;
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: v.$bold;
+    padding: 1rem;
+    text-align: center;
 
     &:hover {
         color: orange;
