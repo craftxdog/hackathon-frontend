@@ -1,0 +1,39 @@
+@use '../../base/mixins' as m;
+@use '../../base/variables' as v;
+
+.barra {
+    background-color: v.$blanco-suave;
+    &__contenido {
+        @include m.contenedor;
+        display: flex;
+        flex-direction: column;
+
+        @include m.desktop {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    &__logo {
+        @include m.logo;
+        animation: heartBeat;
+        animation-duration: 20s;
+        @include m.texto-fluido(1rem, 3rem);
+
+    }
+}
+.logo-texto{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    @include m.tablet{
+        @include m.texto-fluido(1.2rem, 2rem);
+        flex-direction: row;
+        justify-content: flex-start;
+        padding-left: .7rem;
+    }
+    &-r{
+        color: v.$gris;
+    }
+}

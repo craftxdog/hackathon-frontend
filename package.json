@@ -4,14 +4,18 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "chokidar './src/**/*.scss' -c 'npm run build-css' & astro dev",
+    "start": "chokidar './src/**/*.scss' -c 'npm run build-css && npm run pre-build' & astro dev ",
     "build-css": "sass ./src/styles/styles.scss ./src/styles/style.css --style expanded --source-map",
+    "pre-build": "node convert-images.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "astro": "^3.0.12",
+    "chokidar": "^3.5.3",
+    "imagemin-avif": "^0.1.4",
     "lru-cache": "^10.0.1"
   },
   "devDependencies": {
