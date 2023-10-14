@@ -1,34 +1,40 @@
 {
   "name": "hackathon-frontend",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
-  "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "chokidar './src/**/*.scss' -c 'npm run build-css && npm run pre-build' & astro dev ",
-    "build-css": "sass ./src/styles/styles.scss ./src/styles/style.css --style expanded --source-map",
-    "pre-build": "node convert-images.mjs",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "animate.css": "^4.1.1",
-    "astro": "^3.0.12",
-    "chokidar": "^3.5.3",
-    "imagemin-avif": "^0.1.4",
-    "lru-cache": "^10.0.1"
+    "@radix-ui/react-slot": "^1.0.2",
+    "axios": "^1.5.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.287.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.15",
-    "chokidar-cli": "^3.0.0",
-    "esm": "^3.2.25",
-    "glob": "^10.3.4",
-    "imagemin": "^8.0.1",
-    "imagemin-pngquant": "^9.0.2",
-    "imagemin-webp": "^8.0.0",
-    "postcss-cli": "^10.1.0",
-    "sass": "^1.66.1",
-    "sharp": "^0.32.5",
-    "terser": "^5.19.4"
+    "@types/node": "^20.8.6",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
   }
 }
