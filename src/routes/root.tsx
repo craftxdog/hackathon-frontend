@@ -1,4 +1,4 @@
-import Header from '@/components/header'
+import { Header } from '@/components/header'
 import { Outlet } from 'react-router-dom'
 
 export const Root = () => {
@@ -6,7 +6,7 @@ export const Root = () => {
     <>
       <Header />
 
-      <main>
+      <main className='mt-20'>
         <Outlet />
       </main>
 
