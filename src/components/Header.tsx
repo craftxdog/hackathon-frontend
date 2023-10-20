@@ -15,15 +15,18 @@ const NavLink = ({
   linkPath,
   linkName,
   children,
+  handleCloseNav,
 }: {
   linkPath: string
   linkName: string
   children: JSX.Element
+  handleCloseNav: () => void
 }) => {
   return (
     <li>
       <Link
         to={linkPath}
+        onClick={handleCloseNav}
         className='text-primary flex items-center font-medium text-lg md:px-5 md:duration-200
         md:hover:bg-gray-200 md:py-3 md:rounded-lg'
       >
@@ -58,16 +61,32 @@ export const Header = () => {
           )}
         >
           <ul className='flex flex-col gap-y-6 md:flex-row md:items-center'>
-            <NavLink linkPath='/' linkName='Inicio'>
+            <NavLink
+              linkPath='/'
+              linkName='Inicio'
+              handleCloseNav={handleCloseNav}
+            >
               <Home className='mr-2 w-5 h-5 md:hidden' />
             </NavLink>
-            <NavLink linkPath='/' linkName='Servicios'>
+            <NavLink
+              linkPath='/'
+              linkName='Servicios'
+              handleCloseNav={handleCloseNav}
+            >
               <Briefcase className='mr-2 w-5 h-5 md:hidden' />
             </NavLink>
-            <NavLink linkPath='/' linkName='Nosotros'>
+            <NavLink
+              linkPath='/'
+              linkName='Nosotros'
+              handleCloseNav={handleCloseNav}
+            >
               <Users className='mr-2 w-5 h-5 md:hidden' />
             </NavLink>
-            <NavLink linkPath='/' linkName='FAQs'>
+            <NavLink
+              linkPath='/'
+              linkName='FAQs'
+              handleCloseNav={handleCloseNav}
+            >
               <FileQuestion className='mr-2 w-5 h-5 md:hidden' />
             </NavLink>
           </ul>
