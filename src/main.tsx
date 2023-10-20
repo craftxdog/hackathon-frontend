@@ -7,9 +7,9 @@ import { Home } from './routes/home'
 import { IniciarSesion } from './routes/iniciarSesion'
 import { Eventos } from './routes/eventos'
 import { Nosotros } from './routes/nosotros'
-import { Registrar } from './routes/registrar'
 import { RootAdmin } from './routes/admin/rootAdmin'
 import { HomeAdmin } from './routes/admin/homeAdmin'
+import { Registro } from './routes/auth/registro'
 
 const router = createBrowserRouter([
   {
@@ -33,8 +33,8 @@ const router = createBrowserRouter([
         element: <Nosotros />,
       },
       {
-        path: 'registrar',
-        element: <Registrar />,
+        path: 'registro',
+        element: <Registro />,
       },
     ],
   },
