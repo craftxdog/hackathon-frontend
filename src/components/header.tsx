@@ -53,7 +53,7 @@ export const Header = () => {
         </Link>
         <div
           className={cn(
-            'max-md:fixed max-md:rounded-bl-lg max-md:duration-500 max-md:bg-white max-md:pt-20 max-md:pl-8 max-md:top-0 max-md:border-b-[1px] max-md:h-[50%] max-md:w-[70%] max-md:border-l-[1px]',
+            'max-md:fixed max-md:rounded-bl-lg max-md:duration-300 max-md:bg-white max-md:pt-20 max-md:pl-8 max-md:top-0 max-md:border-b-[1px] max-md:h-[50%] max-md:w-[70%] max-md:border-l-[1px]',
             isNavOpen ? 'max-md:right-0' : 'max-md:-right-[100%]',
           )}
         >
@@ -80,7 +80,7 @@ export const Header = () => {
         </div>
         <div className='flex items-center gap-x-4'>
           <Link
-            to='/auth/inciar-sesion'
+            to='/auth/iniciar-sesion'
             className='bg-gray-200 text-primary rounded-lg py-2 px-2 md:flex md:items-center md:px-5 md:py-3
             md:font-medium md:text-lg md:duration-200 md:hover:bg-mountain-meadow md:hover:text-white'
           >
