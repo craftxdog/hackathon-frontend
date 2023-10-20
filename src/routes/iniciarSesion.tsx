@@ -1,5 +1,6 @@
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "./auth/configuration.firebase";
+import addPatient from "@/utils/services/users/userService";
 
 
 export const IniciarSesion = () => {
@@ -9,7 +10,8 @@ export const IniciarSesion = () => {
       const user = res.user;
       
   
-      console.log(user)
+      console.log(user.uid)
+      await addPatient(user, "0f467c66-5476-4e75-a76a-a1268e3c8704")
       }
     catch (err:any) {
       console.error(err);
