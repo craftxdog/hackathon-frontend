@@ -5,10 +5,9 @@ export const Root = () => {
   return (
     <>
       {/* Componente que aparecera en cada pagina o ruta que se acceda. */}
-
-      <nav>
-        <Header />
-      </nav>
+      
+      <Header />
+      
 
       <main>
         {/* La etiqueta o componente Outlet,
