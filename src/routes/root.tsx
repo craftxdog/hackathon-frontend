@@ -10,10 +10,6 @@ export const Root = () => {
       
 
       <main>
-        {/* La etiqueta o componente Outlet,
-                    es un componente especial de react-router-dom,
-                    ayuda a que cada pagina creada herede la estructura y
-                    componentes que se encuentre en este archivo. */}
         <Outlet />
       </main>
 

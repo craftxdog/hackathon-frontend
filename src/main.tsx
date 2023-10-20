@@ -5,10 +5,11 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { Root } from './routes/root'
 import { Home } from './routes/home'
 import { IniciarSesion } from './routes/iniciarSesion'
-import { Eventos} from './routes/eventos'
+import { Eventos } from './routes/eventos'
 import { Nosotros } from './routes/nosotros'
 import { Registrar } from './routes/registrar'
-import { ThemeProvider } from './components/themeProvider'
+import { RootAdmin } from './routes/admin/rootAdmin'
+import { HomeAdmin } from './routes/admin/homeAdmin'
 
 const router = createBrowserRouter([
   {
@@ -25,15 +26,25 @@ const router = createBrowserRouter([
       },
       {
         path: 'eventos',
-        element: <Eventos />
+        element: <Eventos />,
       },
       {
         path: 'nosotros',
-        element: <Nosotros/>
+        element: <Nosotros />,
       },
       {
         path: 'registrar',
-        element: <Registrar />
+        element: <Registrar />,
+      },
+    ],
+  },
+  {
+    path: '/dashboard/admin',
+    element: <RootAdmin />,
+    children: [
+      {
+        index: true,
+        element: <HomeAdmin />,
       },
     ],
   },
@@ -41,8 +52,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )
