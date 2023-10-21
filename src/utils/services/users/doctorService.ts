@@ -10,6 +10,7 @@ export interface DoctorRequest {
     date_of_birth: Date | null;
     gender: number | null;
     cedula: string | null;
+    hospital_id: string | null;
 }
 
 export interface DoctorResponse {
