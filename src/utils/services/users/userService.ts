@@ -1,21 +1,22 @@
 import database from '@/utils/connections/dbConnection'
 import { Patient, UserRequest } from '@/utils/interfaces/user';
-import { PostgrestError, PostgrestSingleResponse, SupabaseClient } from '@supabase/supabase-js';
+import { PostgrestError, SupabaseClient } from '@supabase/supabase-js';
 
 
-interface UserData {
+export interface UserData {
   id: string;
 }
 
-interface PatientData {
+export interface PatientData {
   user_id: string;
 }
 
-interface Result<T> {
+export interface Result<T> {
   data: T[] | null;
   error: PostgrestError | null;
 }
-async function upsertData<T, TOut>(table: string, dataFrom: T, supabase: SupabaseClient): Promise<Result<TOut>> {
+
+export async function upsertData<T, TOut>(table: string, dataFrom: T, supabase: SupabaseClient): Promise<Result<TOut>> {
   const result = await supabase.from(table).upsert([dataFrom]).select();
 
   return {
@@ -24,7 +25,7 @@ async function upsertData<T, TOut>(table: string, dataFrom: T, supabase: Supabas
   };
 }
 
-async function searchByNonNullFields<T, TOut>(
+export async function searchByNonNullFields<T, TOut>(
   table: string,
   fields: Partial<T>
 ): Promise<Result<TOut[]>> {
@@ -58,6 +59,8 @@ export async function searchUserByNameAndLastName(name: string | null, lastname:
   return await searchByNonNullFields<UserSearchCriteria, UserData>('user', fields);
 }
 
+
+
 export async function addPatient(user: UserRequest, patient: Patient): Promise<Result<PatientData>> {
   try {
     const { data: dataUser, error: errorUpsert } = await upsertData<UserRequest, UserData>('user', user, database);
@@ -86,10 +89,6 @@ export async function addPatient(user: UserRequest, patient: Patient): Promise<R
     return { data: null, error };
   }
 }
-
-
-
-
 
 
 export default addPatient
