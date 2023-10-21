@@ -9,7 +9,6 @@ interface UserData {
 
 interface PatientData {
   user_id: string;
-  // Otras propiedades de paciente
 }
 
 interface Result<T> {
@@ -25,10 +24,43 @@ async function upsertData<T, TOut>(table: string, dataFrom: T, supabase: Supabas
   };
 }
 
+async function searchByNonNullFields<T, TOut>(
+  table: string,
+  fields: Partial<T>
+): Promise<Result<TOut[]>> {
+  const query = database.from(table).select();
 
-async function addPatient(user: UserRequest, patient: Patient): Promise<Result<PatientData>> {
+  // Filtra los campos que no son nulos
+  for (const key in fields) {
+    if (fields[key] !== null && fields[key] !== undefined) {
+      query.or(`${key}.ilike.%${fields[key]}%`);
+    }
+  }
+  // Realiza la consulta
+  const { data, error } = await query.select();
+
+  return { data, error };
+}
+
+// Método para buscar por ID
+async function searchUserById(userId: string): Promise<Result<UserData[]>> {
+  const fields = { id: userId };
+  return await searchByNonNullFields<UserData, UserData>('user', fields);
+}
+
+interface UserSearchCriteria {
+  name: string | null;
+  lastname: string | null;
+}
+// Método para buscar por nombre y apellido
+export async function searchUserByNameAndLastName(name: string | null, lastname: string | null): Promise<Result<UserData[]>> {
+  const fields = { name, lastname };
+  return await searchByNonNullFields<UserSearchCriteria, UserData>('user', fields);
+}
+
+export async function addPatient(user: UserRequest, patient: Patient): Promise<Result<PatientData>> {
   try {
-    const { data: dataUser, error: errorUpsert } = await upsertData<UserRequest,UserData>('user', user, database);
+    const { data: dataUser, error: errorUpsert } = await upsertData<UserRequest, UserData>('user', user, database);
 
     if (errorUpsert) {
       return { data: null, error: errorUpsert };
@@ -39,7 +71,7 @@ async function addPatient(user: UserRequest, patient: Patient): Promise<Result<P
     }
 
 
-    const { data, error } = await upsertData<Patient,PatientData>('patient', patient, database);
+    const { data, error } = await upsertData<Patient, PatientData>('patient', patient, database);
 
     if (error) {
       console.error('Error al insertar/actualizar datos de paciente:', error);
@@ -54,6 +86,8 @@ async function addPatient(user: UserRequest, patient: Patient): Promise<Result<P
     return { data: null, error };
   }
 }
+
+
 
 
 

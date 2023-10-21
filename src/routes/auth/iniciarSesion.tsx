@@ -1,7 +1,6 @@
 import { signInWithPopup } from 'firebase/auth'
 import { auth, googleProvider } from './configuration.firebase'
-import addPatient from '@/utils/services/users/userService'
-import { FirebaseUser } from '@/utils/interfaces/firebase/user.firebase'
+import addPatient, { searchUserByNameAndLastName } from '@/utils/services/users/userService'
 import { convertFirebaseUserToUserAndPatient } from '@/utils/interfaces/user'
 
 export const IniciarSesion = () => {
@@ -9,10 +8,14 @@ export const IniciarSesion = () => {
     try {
       const res = await signInWithPopup(auth, googleProvider)
 
-      const {user, patient} = convertFirebaseUserToUserAndPatient(res);
+      const { user, patient } = convertFirebaseUserToUserAndPatient(res);
       console.log(user)
 
-      let result= await addPatient(user, patient)
+      let result = await addPatient(user, patient)
+
+      let resultSearch = await searchUserByNameAndLastName(user.name, null)
+
+      console.log(resultSearch)
       console.log(result)
     } catch (err: any) {
       console.error(err)
