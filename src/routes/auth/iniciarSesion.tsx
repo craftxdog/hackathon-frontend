@@ -1,11 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { signInWithPopup } from 'firebase/auth'
 import { auth, googleProvider } from './configuration.firebase'
-
 import { Forms } from '@/components/elements/Forms'
-
-
-
 import addPatient, { searchUserByNameAndLastName } from '@/utils/services/users/userService'
 import { convertFirebaseUserToUserAndPatient } from '@/utils/interfaces/user'
 
