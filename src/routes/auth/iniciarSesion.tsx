@@ -1,19 +1,29 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { signInWithPopup } from 'firebase/auth'
 import { auth, googleProvider } from './configuration.firebase'
-import addPatient from '@/utils/services/users/userService'
+
 import { Forms } from '@/components/elements/Forms'
 
+
+
+import addPatient, { searchUserByNameAndLastName } from '@/utils/services/users/userService'
+import { convertFirebaseUserToUserAndPatient } from '@/utils/interfaces/user'
 
 
 export const IniciarSesion = () => {
   const signInWithGoogle = async () => {
     try {
       const res = await signInWithPopup(auth, googleProvider)
-      const user = res.user
 
-      console.log(user.uid)
-      await addPatient(user, '0f467c66-5476-4e75-a76a-a1268e3c8704')
+      const { user, patient } = convertFirebaseUserToUserAndPatient(res);
+      console.log(user)
+
+      const result = await addPatient(user, patient)
+
+      const resultSearch = await searchUserByNameAndLastName(user.name, null)
+
+      console.log(resultSearch)
+      console.log(result)
     } catch (err: any) {
       console.error(err)
       alert(err.message)
